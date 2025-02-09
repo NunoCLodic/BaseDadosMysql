@@ -45,16 +45,32 @@ desc pessoas;
 alter table pessoas;
 select * from pessoas;
 
+/*Altera a tabela pessoa adicionando coluna profissao depois do nome*/
 alter table pessoas
 add column profissao varchar(10) after nome;
 
+/* altera a tabela pessoa adioninando a coluna codigo em primeiro*/
 alter table pessoas
 add column codigo int first;
 
-
+/*elimina a coluna profissao*/
 alter table pessoas
 drop column profissao;
 
-alter table pessoas;
+/*modifica os tipos e constrain*/
+alter table pessoas
+modify column profissao varchar (20) not null default '';
+
+
+/*modifica o nome da coluna*/
+alter table pessoas
+change column profissao prof varchar(20) not null default '';
+
+alter table pessoas
+rename to Individios;
+
+/*descrever coluna pessoa*/
+desc pessoas;
+desc Individios;
 
 
