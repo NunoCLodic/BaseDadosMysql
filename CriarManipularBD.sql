@@ -66,11 +66,91 @@ modify column profissao varchar (20) not null default '';
 alter table pessoas
 change column profissao prof varchar(20) not null default '';
 
+alter table Individios
+change column profissao prof varchar(20) not null default '';
+
 alter table pessoas
 rename to Individios;
 
 /*descrever coluna pessoa*/
 desc pessoas;
 desc Individios;
+
+/*Criar uma nova tabela*/
+create table if not exists curso(
+nome varchar(30) not null unique,
+descrisao text,
+carga int unsigned,
+totalaulas int unsigned,
+ano year default '2025') default charset=utf8mb4;
+
+alter table curso
+add column idcurso int first;
+
+alter table curso
+add primary key (idcurso);
+
+drop table curso;
+
+desc curso;
+
+/*Nova tabela*/
+
+create table if not exists teste(
+id int,
+nome varchar(10),
+idade int);
+
+insert into teste value
+('1', 'Pedro', '22'),
+('2', 'Maria', '12'),
+('3', 'Maricota', '77');
+
+select * from teste;
+
+drop table if exists aluno;
+drop table if exists teste;
+
+select * from individios;
+select * from curso;
+insert into curso value
+('1','html4','curso de html','40','37','2014'),
+('2','Algoritimo','Lógica de programação','20','15','2014'),
+('3','Photoshop','Dicas de photoshop cc','10','8','2014'),
+('4','PGP','curso de php para iniciante','40','20','2010'),
+('5','Jarva','Introdução a linguagem java','10','29','2000'),
+('6','Mysql','Banco de dados mysql','30','15','2016'),
+('7','Word','Curso completo de word','40','30','2016'),
+('8','Sapateado','Danças Rítimicas','40','30','2018'),
+('9','Cozinha Árabe','Aprender a fazer kibe','40','30','2018'),
+('10','YouTuber','Gerar polémica e ganhar inscritos','5','2','2018');
+
+select * from curso;
+
+/*Modificando Linhas na tabela*/
+update curso
+set nome = 'html5'
+where idcurso = '1';
+
+/*Modificando duas colunas em uma Linhas na tabela*/
+update curso 
+set nome = 'PHP', ano = '2015'
+where idcurso = '4';
+
+/*Modificando três colunas em uma Linhas na tabela*/
+update curso
+set nome = 'Java', carga = '40', ano = '2015'
+where idcurso = '5'
+limit 1;
+
+/*Modificando a linha sem o limit*/
+update curso
+set ano = '2018', carga = '0'
+where ano = '2050'
+limit 1;/*com o limit, limita aapenas uma linha*/
+
+select * from curso;
+
+
 
 
