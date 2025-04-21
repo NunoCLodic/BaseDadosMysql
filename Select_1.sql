@@ -41,3 +41,58 @@ where carga > 35 and totaulas < 30;
 
 select * from cursos
 where carga > 35 or totaulas < 30;
+
+select * from cursos
+where nome = 'php';
+
+select * from cursos
+where nome like '%a'; /*like = parecido, % = nenhum ou varios caracteres*/
+
+select * from cursos
+where nome like '%a%';/*"a" em qualquer lugar*/
+
+select * from cursos
+where nome not like '%a%';/*não tem "a" em nenhum lugar*/
+
+/*comando de update*/
+update cursos set nome = 'PáOO' 
+where idcurso = '9';
+
+select * from cursos 
+where nome like 'ph%p%';/* não exige que termine com qualquer coisa*/
+
+select * from cursos 
+where nome like 'ph%p_'; /*exige que termine com qualquer coisa*/
+
+select * from gafanhotos
+where nome like '%_silva%';
+
+/*DISTINGUINDO*/
+select distinct nacionalidade from gafanhotos /*repetir apenas uma vez os paises*/
+order by nacionalidade;
+
+/*AGREGAÇÕES*/
+select count(*) from cursos;/*conta todos os cursos*/
+
+select count(*) from cursos
+where carga >40;/*conta os que tenham carga maior de 40*/
+
+select * from cursos
+order by carga;
+
+select max(carga) from cursos;/*maior carga*/
+
+select * from cursos 
+where ano = '2016';
+
+select max(totaulas) from cursos /*dos cursos de 2016, qual teve mais aula*/
+where ano = '2016';
+
+select min(totaulas) from cursos /*dos cursos de 2016, qual teve menos aula*/
+where ano = '2016';
+
+select sum(totaulas) from cursos
+where ano = '2016';
+
+select avg(totaulas) from cursos/*media de total de aula em 2016*/
+where ano = '2016';
